@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}" type="text/css">
+    <link rel="icon" href="https://flask.palletsprojects.com/en/3.0.x/_static/flask-vertical.png" >
+    <title>{{ name }}'s Watchlist</title>
+</head>
+<body>
+    <h2>
+        <img alt="yi" class="avatar" src="{{ url_for('static', filename='images/yi.png') }}">
+        {{ user.name }}'s Watchlist
+    </h2>
+    <p>{{ movies|length }} Titles</p>
+    <ul class="movie-list">
+        {% for movie in movies %}
+        <li>{{ movie.title }} - {{ movie.year }}</li>
+        {% endfor %}
+    </ul>
+    <footer>
+        <img alt="miannq" class="totoro" src="{{ url_for('static', filename='images/mianq.png') }}">
+        <small>&copy; 2023 <a href="http://helloflask.com/book/3">HelloFlask</a></small>
+    </footer>
+</body>
+</html>
