@@ -1,7 +1,7 @@
 import os
 import sys
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, url_for, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 
 WIN = sys.platform.startswith('win')
@@ -66,8 +66,19 @@ def inject_user():
     user = User.query.first()
     return dict(user=user)
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
+    if request.method == 'POST':
+        title = request.form.get('title')
+        year = request.form.get('year')
+        if not title or not year or len(year) > 4 or len(title) > 60:
+            flash("Invalid input.")
+            return redirect(url_for('index'))
+        movie = Movie(title = title, year = year)
+        db.session.add(movie)
+        db.session.commit()
+        flash("Item created.")
+        return redirect(url_for('index'))
     movies = Movie.query.all()
     return render_template('index.html', movies=movies)
 

@@ -1,27 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}" type="text/css">
-    <link rel="icon" href="https://flask.palletsprojects.com/en/3.0.x/_static/flask-vertical.png" >
-    <title>{{ name }}'s Watchlist</title>
-</head>
-<body>
-    <h2>
-        <img alt="yi" class="avatar" src="{{ url_for('static', filename='images/yi.png') }}">
-        {{ user.name }}'s Watchlist
-    </h2>
-    <ul class="movie-list">
-        <li>
-            Page Not Found - 404
-            <span class="float-right">
-                <a href="{{ url_for('index') }}">Go Back</a>
-            </span>
-        </li>
-    </ul>
-    <footer>
-        <img alt="miannq" class="totoro" src="{{ url_for('static', filename='images/mianq.png') }}">
-        <small>&copy; 2023 <a href="http://helloflask.com/book/3">HelloFlask</a></small>
-    </footer>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}404{% endblock %}
+{% block header %}
+<h1>
+    <img alt="aaaaa" class="avatar" src="{{ url_for('static', filename='images/aaaaa.png') }}">
+    {{ user.name }}'s Watchlist
+</h1>
+{% endblock %}
+{% block content %}
+<ul class="movie-list">
+  <li>
+    Page Not Found 404
+    <span class="float-right">
+        <a href="{{ url_for('index') }}">Go Back</a>
+    </span>
+</li>
+</ul>
+{% endblock %}

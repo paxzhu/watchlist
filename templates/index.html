@@ -1,25 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}" type="text/css">
-    <link rel="icon" href="https://flask.palletsprojects.com/en/3.0.x/_static/flask-vertical.png" >
-    <title>{{ name }}'s Watchlist</title>
-</head>
-<body>
-    <h2>
-        <img alt="yi" class="avatar" src="{{ url_for('static', filename='images/yi.png') }}">
-        {{ user.name }}'s Watchlist
-    </h2>
-    <p>{{ movies|length }} Titles</p>
-    <ul class="movie-list">
-        {% for movie in movies %}
-        <li>{{ movie.title }} - {{ movie.year }}</li>
-        {% endfor %}
-    </ul>
-    <footer>
-        <img alt="miannq" class="totoro" src="{{ url_for('static', filename='images/mianq.png') }}">
-        <small>&copy; 2023 <a href="http://helloflask.com/book/3">HelloFlask</a></small>
-    </footer>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block header %}
+<h1>
+    <img alt="yi" class="avatar" src="{{ url_for('static', filename='images/yi.png') }}">
+    {{ user.name }}'s Watchlist
+</h1>
+{% endblock %}
+{% block content %}
+<p>{{ movies|length }}-Titles</p>
+<form method="post">
+    <label>Title</label>
+    <input type="text" name="title" required>
+    <label>Year</label>
+    <input type="text" name="year" required>
+    <input class="btn" type="submit" name="submit" value="Add">
+</form>
+<ul class="movie-list">
+    {% for movie in movies %}
+    <li>{{ movie.title }} - {{ movie.year }}
+        <span class="float-right">
+            <a class="imdb" href="https://www.imdb.com/find?q={{ movie.title }}" target="_blank" title="Find this movie on IMDb">IMDb</a>
+        </span>
+    </li>
+    {% endfor %}
+</ul>
+<img alt="mianq" class="totoro" src="{{ url_for('static', filename='images/mianq.png') }}">
+{% endblock %}
