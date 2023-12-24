@@ -1,10 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}404{% endblock %}
-{% block header %}
-<h1>
+{% block header_img %}
     <img alt="aaaaa" class="avatar" src="{{ url_for('static', filename='images/aaaaa.png') }}">
-    {{ user.name }}'s Watchlist
-</h1>
 {% endblock %}
 {% block content %}
 <ul class="movie-list">

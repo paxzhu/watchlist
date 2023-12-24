@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Edit{% endblock %}
+{% block header_img %}
+    <img alt="yi" class="avatar" src="{{ url_for('static', filename='images/yi.png') }}">
+{% endblock %}
+{% block content %}
+<p>Edit Item</p>
+<form method="post">
+    <label>Title</label>
+    <input type="text" name="title" value="{{ movie.title }}" required>
+    <label>Year</label>
+    <input type="text" name="year" value="{{ movie.year }}" required>
+    <input class="btn" type="submit" name="submit" value="Update">
+</form>
+{% endblock %}

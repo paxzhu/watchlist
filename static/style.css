@@ -115,3 +115,18 @@ input[name=year] {
     color: white;
     border: 1px solid black;
 }
+
+.alert {
+    position: relative;
+    padding: 7px;
+    margin: 7px 0;
+    border: 1px solid transparent;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    border-radius: 5px;
+}
+
+.inline-form {
+    display: inline;
+}
